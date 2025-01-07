@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'data_model.dart';
+import 'graph_view.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     const HomePage(),
     const ChatScreen(),
+    SocialDataGraph(),
   ];
 
   void _onItemTapped(int index) {
@@ -68,6 +70,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
             label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.insert_chart_outlined_rounded),
+            label: 'Insights',
           ),
         ],
       ),
@@ -143,9 +149,6 @@ class HomePage extends StatelessWidget {
   }
 }
 
-
-
-
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
 
@@ -160,9 +163,7 @@ class ChatScreenState extends State<ChatScreen> {
   bool _isLoading = false;
   String? _currentSessionId;
   final String apiKey = dotenv.env['apiKey'] ?? "Key";
-  final String apiUrl = 'https://api.langflow.astra.datastax.com/lf/e45ff30b-a86b-4fdd-ae0d-047d63109aa2/api/v1/run/01e9f89a-fdd9-4975-9a28-2fe47a2265d8?stream=false';
-
-
+  final String apiUrl = dotenv.env['chatUrl'] ?? "Key";
 
 
   Future<void> _handleSubmitted(String text) async {
