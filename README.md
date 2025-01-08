@@ -43,7 +43,7 @@ This project consists of three main components:
 - Flutter SDK
 - DataStax Astra DB account
 - Langflow installation
-- OpenAI API key (for GPT integration)
+- Gemini API key (for GPT integration)
 
 ## Setup Instructions
 
@@ -61,6 +61,7 @@ ASTRA_DB_ID=your_database_id
 ASTRA_DB_REGION=your_database_region
 ASTRA_DB_KEYSPACE=your_keyspace
 ASTRA_DB_TOKEN=your_token
+
 ```
 
 ### 2. Langflow Setup
@@ -79,9 +80,10 @@ flutter run
 
 Required environment variables in `.env`:
 ```
-ASTRA_DB_ENDPOINT=your_endpoint
-ASTRA_DB_TOKEN=your_token
-LANGFLOW_API_ENDPOINT=your_langflow_endpoint
+apiKey=langflow_api_key
+token=db_api_key
+endpoint=chat_url
+chatUrl=langflow_url
 ```
 
 ## Features in Detail
